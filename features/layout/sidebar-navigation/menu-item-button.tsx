@@ -18,11 +18,19 @@ export function MenuItemButton({
   iconSrc,
   isCollapsed,
 }: MenuItemProps) {
+  const rotateIcon = text === "Collapse" && !!isCollapsed;
+
   return (
     <li className={classNames(styles.listItem, className)}>
       <Button className={styles.anchor} onClick={onClick}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img className={styles.icon} src={iconSrc} alt={`${text} icon`} />{" "}
+        <img
+          className={
+            rotateIcon ? classNames(styles.icon, styles.rotate) : styles.icon
+          }
+          src={iconSrc}
+          alt={`${text} icon`}
+        />{" "}
         {!isCollapsed && text}{" "}
       </Button>
     </li>
